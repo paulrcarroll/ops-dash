@@ -17,7 +17,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/ms-identity-javascript-angular-spa",
+						"outputPath": "dist/ew-ops-dash",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -27,8 +27,8 @@
 							"src/assets"
 						],
 						"styles": [
-							"./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-							"src/styles.scss"
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "src/styles.scss"
 						],
 						"scripts": []
 					},
@@ -69,10 +69,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "ms-identity-javascript-angular-spa:build:production"
+							"browserTarget": "ew-ops-dash:build:production"
 						},
 						"development": {
-							"browserTarget": "ms-identity-javascript-angular-spa:build:development"
+							"browserTarget": "ew-ops-dash:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -80,7 +80,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "ms-identity-javascript-angular-spa:build"
+						"browserTarget": "ew-ops-dash:build"
 					}
 				},
 				"test": {
