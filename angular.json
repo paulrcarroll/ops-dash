@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"ms-identity-javascript-angular-spa": {
+		"ew-ops-dash": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
