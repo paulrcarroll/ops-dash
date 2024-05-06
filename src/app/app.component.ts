@@ -7,10 +7,10 @@ import { filter, takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'Angular 14 - MSAL v2 Quickstart Sample';
+  title = 'EW Ops Dash';
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
