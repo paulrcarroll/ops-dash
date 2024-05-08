@@ -1,0 +1,6 @@
+
+<app-bar-volume [dataPoints]="gatewayTotalDataPoints"></app-bar-volume>
+
+<div [style.opacity]="failedCountsPct.length ? '1' : '0.2'">
+    <app-recent-failed [smsData]="failedCountsPct" (chooseSsid)="onChangeSsid($event)"></app-recent-failed>
+</div>

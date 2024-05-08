@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfileComponent } from './profile.component';
+import { GatewayHomeComponent } from './gateway-home.component';
 
-describe('ProfileComponent', () => {
-  let component: ProfileComponent;
-  let fixture: ComponentFixture<ProfileComponent>;
+describe('GatewayHomeComponent', () => {
+  let component: GatewayHomeComponent;
+  let fixture: ComponentFixture<GatewayHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      declarations: [ GatewayHomeComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProfileComponent);
+    fixture = TestBed.createComponent(GatewayHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

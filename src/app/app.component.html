@@ -1,14 +1,23 @@
 <mat-toolbar color="primary">
-  <a class="title" href="/">{{ title }}</a>
+  <div class="title" href="/">{{ title }}</div>
 
   <div class="toolbar-spacer"></div>
 
-  <a mat-button [routerLink]="['profile']">Profile</a>
 
-  <button mat-raised-button *ngIf="!loginDisplay" (click)="login()">Login</button>
-  <button mat-raised-button *ngIf="loginDisplay" (click)="logout()">Logout</button>
+  <div *ngIf="profile" style="margin-right: 20px"> 
+    <img style="margin-bottom: -20px" class="rounded" [src]="imageToShow" alt="Place image title"
+      onerror="this.onerror=null;this.src='./assets/images/user_placeholder_img.jpg';"
+      *ngIf="!isImageLoading; else noImageFound" />
+  </div>
+  <div *ngIf="profile" style="margin-right: 20px">{{profile.userPrincipalName}}</div>
+  <button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
+  <button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>
 </mat-toolbar>
 <div class="container">
+
+  <ng-template #noImageFound>
+    <img src="./assets/images/user_placeholder_img.jpg" alt="Fallbackimage" />
+  </ng-template>
   <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
   <router-outlet *ngIf="!isIframe"></router-outlet>
 </div>

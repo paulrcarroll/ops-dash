@@ -1,0 +1,15 @@
+<div class="row">
+	<div class="table-container">
+		<div class="table-title">Last 2 days > 3% failures
+			<div style="float:right">
+				<button id="excel-table" class="btn btn-primary" (click)="exportToExcel()">Export to Excel</button>
+			</div>
+		</div>
+		<div class="table-inner">
+			<gui-grid *ngIf="smsData" [columns]="columns" [source]="smsData" [maxHeight]="400" [width]="920"
+				[sorting]="true" [rowSelection]="rowSelection" (selectedRows)="onSelectedRows($event)"
+			>
+			</gui-grid>
+		</div>
+	</div>
+</div>

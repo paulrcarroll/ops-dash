@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  authClientId: 'a5d10b60-ed82-448b-8e17-2da59782cb33',
+  authAuthority: 'https://login.microsoftonline.com/e64e61a9-0a1f-4685-abc4-2fd9cc66a1e2',
+  authRedirectUrl: 'http://localhost:4200'
 };
 
 /*

@@ -1,16 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { environment } from '../environments/environment';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 
+import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
+import { GuiGridModule } from '@generic-ui/ngx-grid';
+/*
+import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
+import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
+
+    "@ngx-loading-bar/core": "^6.0.2",
+    "@ngx-loading-bar/http-client": "^6.0.2",
+    "@ngx-loading-bar/router": "^6.0.2"
+*/
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
+import { BarVolumeComponent } from './chart-types/bar-volume/bar-volume.component';
+import { RecentFailedComponent } from './sms/recent-failed/recent-failed.component';
+import { GatewayHomeComponent } from './gateways/gateway-home/gateway-home.component';
+
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {
@@ -47,9 +61,9 @@ export function loggerCallback(logLevel: LogLevel, message: string) {
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'a5d10b60-ed82-448b-8e17-2da59782cb33',
-      authority: 'https://login.microsoftonline.com/e64e61a9-0a1f-4685-abc4-2fd9cc66a1e2',
-      redirectUri: 'http://localhost:4200',
+      clientId: environment.authClientId,
+      authority: environment.authAuthority,
+      redirectUri: environment.authRedirectUrl,
     },
     cache: {
       cacheLocation: BrowserCacheLocation.LocalStorage,
@@ -84,7 +98,13 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   };
 }
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent],
+  declarations: [
+    AppComponent, 
+    HomeComponent, 
+    GatewayHomeComponent, 
+    BarVolumeComponent,
+    RecentFailedComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -94,6 +114,9 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatListModule,
     HttpClientModule,
     MsalModule,
+    GuiGridModule,
+
+    CanvasJSAngularChartsModule
   ],
   providers: [
     {
