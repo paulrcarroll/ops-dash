@@ -1,0 +1,19 @@
+<div class="row">
+	<div class="table-container" [style.opacity]="!loading ? '1' : '0.2'">
+		<div class="table-title">{{viewOptions.title}}
+			<div style="float:right">
+				<button id="excel-table" class="btn btn-primary" (click)="exportToExcel()">Export to Excel</button>
+			</div>
+		</div>
+		<div class="table-inner">
+			<gui-grid *ngIf="!loading" [columns]="columns" [source]="tableData" [maxHeight]="400" [width]="920"
+				[sorting]="true" [rowSelection]="rowSelection" (selectedRows)="onSelectedRows($event)"
+			>
+			</gui-grid>
+
+			<div class="placeholder"*ngIf="loading">
+				<div class="place-row" *ngFor="let i of [1,2,3,4,5,6,7,8]"></div>
+			</div>
+		</div>
+	</div>
+</div>

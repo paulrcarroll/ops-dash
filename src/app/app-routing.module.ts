@@ -3,13 +3,31 @@ import { RouterModule, Routes } from '@angular/router';
 import { BrowserUtils } from '@azure/msal-browser';
 import { HomeComponent } from './home/home.component';
 import { MsalGuard } from '@azure/msal-angular';
-import { GatewayHomeComponent } from './gateways/gateway-home/gateway-home.component';
+import { PaymentsHomeComponent } from './dashboards/payments-home/payments-home.component';
+import { DashHomeComponent } from './dashboards/dash-home/dash-home.component';
+import { SmsHomeComponent } from './dashboards/sms-home/sms-home.component';
+import { IsvHomeComponent } from './dashboards/isv-home/isv-home.component';
 
 
 const routes: Routes = [
   {
-    path: 'gateways',
-    component: GatewayHomeComponent,
+    path: 'dash',
+    component: DashHomeComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'payments',
+    component: PaymentsHomeComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'sms',
+    component: SmsHomeComponent,
+    canActivate: [MsalGuard],
+  },
+  {
+    path: 'isv',
+    component: IsvHomeComponent,
     canActivate: [MsalGuard],
   },
   {
@@ -18,7 +36,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: GatewayHomeComponent
+        component: DashHomeComponent
       }
     ]
   },

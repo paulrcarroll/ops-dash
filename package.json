@@ -29,7 +29,8 @@
 
     "@canvasjs/angular-charts": "^1.0.3",
     "@canvasjs/charts": "^3.7.36",
-    "@generic-ui/ngx-grid": "^0.21.0"
+    "@generic-ui/ngx-grid": "^0.21.0",
+
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.2",

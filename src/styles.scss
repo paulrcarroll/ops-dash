@@ -16,11 +16,39 @@ body {
 }
 
 .mat-toolbar.mat-primary {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   background-color: #046a
 }
+
+mat-sidenav-container {
+    min-height: 100%;
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav {
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+    padding-top: 4rem;
+  }
+
+  .entry{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding:0.75rem;
+  }
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav-content{
+  padding-top: 3.5rem;
+  @media screen and (min-width: 600px) {
+      padding-top: 4rem;
+  }
+}
+
 
 .row {
   display: flex;
@@ -35,7 +63,7 @@ body {
   margin: 20px;
 }
 
-img.rounded {
+img.profile-pic {
   object-fit: cover;
   border-radius: 50%;
   height: 80px;

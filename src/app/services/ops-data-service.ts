@@ -4,6 +4,7 @@ import { GatewayCount, GatewayResponseCount, GatewayResponseDayCount, KeyValPair
 import { Subject, Observable, tap } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { addDays } from '../utils/date-utils';
+import { environment } from 'src/environments/environment';
 
 export interface FromToDate {
   fromDate: Date;
@@ -29,6 +30,12 @@ export interface SmsViewModel {
   segmentCounts: any[];
 }
 
+export interface QueryParams {
+  viewName: string,
+  top?: number,
+  where?: any
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -43,10 +50,7 @@ export class OpsDataService {
 
   public fromDate: Date = new Date();
   public toDate: Date = new Date();
-
-  //private apiRoot = 'http://localhost:3000';
-  // TODO: put in evironment config
-  private apiRoot = 'https://hcjkqe6iei.execute-api.us-west-2.amazonaws.com/prod';
+  private apiRoot = environment.apiRoot;
 
   constructor(private httpClient: HttpClient) { 
     this.fromDate = addDays(new Date(), - 14);
@@ -60,6 +64,15 @@ export class OpsDataService {
     this.gatewayPingData().subscribe();
     this.gatewayVolumeByDate().subscribe();
     this.gatewayResponseCountsByDate().subscribe();
+  }
+
+  getViewTable(params: QueryParams) {
+    let httpParams = new HttpParams()
+      .set('queryType', 'getViewTable')
+      .set('viewName', params.viewName);
+
+    if (params.top) httpParams.set('top', params.top);
+    return this.httpClient.get<any[]>(`${this.apiRoot}/sms`, { params: httpParams });
   }
 
   gatewayVolumeByDate(): Observable<GatewayCount[]> {

@@ -1,18 +1,17 @@
 
 <div class="row pad20">
     <div *ngIf="!loginDisplay">
-        <p class="welcome">Everware Ops Dashboard</p>
+        <h3>Authorized Everyware users only</h3>
         <p></p>
-        <p>Only authorized Everyware Office 365 users</p>
+        <p>Please login with your Office 365 credentials...</p>
         <p></p>
-        <p>Please sign-in with your Office 365 creds...</p>
+        <p></p>
+        <p style="margin-top: 60px">Enjoy a sad animal fact</p>
+        <div class="margin20"><img [src]="randomImageName" height="300px" [@fade]="state"></div>
+    
     </div>
     <div *ngIf="loginDisplay">
         <router-outlet></router-outlet>
     </div>
-    
-    <div class="margin20"><img [src]="randomImageName" height="300px" [@fade]="state"></div>
-    
-
 </div>
 

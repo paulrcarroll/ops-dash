@@ -3,9 +3,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { environment } from '../environments/environment';
 
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
+
 
 import { CanvasJSAngularChartsModule } from '@canvasjs/angular-charts';
 import { GuiGridModule } from '@generic-ui/ngx-grid';
@@ -21,10 +26,14 @@ import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { DashHomeComponent } from './dashboards/dash-home/dash-home.component';
+import { IsvHomeComponent } from './dashboards/isv-home/isv-home.component';
+import { SmsHomeComponent } from './dashboards/sms-home/sms-home.component';
 import { BarVolumeComponent } from './chart-types/bar-volume/bar-volume.component';
 import { RecentFailedComponent } from './sms/recent-failed/recent-failed.component';
-import { GatewayHomeComponent } from './gateways/gateway-home/gateway-home.component';
-
+import { PaymentsHomeComponent } from './dashboards/payments-home/payments-home.component';
+import { ViewTableComponent } from './view-table/view-table.component';
+import { DatapointCardComponent } from './cards/datapoint-card/datapoint-card.component';
 
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {
@@ -47,6 +56,7 @@ import {
   MsalModule,
   MsalInterceptor,
 } from '@azure/msal-angular';
+
 
 const GRAPH_ENDPOINT = 'https://graph.microsoft.com/me';
 
@@ -101,9 +111,14 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [
     AppComponent, 
     HomeComponent, 
-    GatewayHomeComponent, 
+    PaymentsHomeComponent, 
     BarVolumeComponent,
-    RecentFailedComponent
+    RecentFailedComponent,
+    ViewTableComponent,
+    DatapointCardComponent,
+    DashHomeComponent,
+    IsvHomeComponent,
+    SmsHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +126,12 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     AppRoutingModule,
     MatButtonModule,
     MatToolbarModule,
-    MatListModule,
+    MatListModule,    
+    MatIconModule,
+    MatSidenavModule,
+    MatCardModule,
+    MatMenuModule,
+
     HttpClientModule,
     MsalModule,
     GuiGridModule,

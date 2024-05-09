@@ -1,23 +1,60 @@
 <mat-toolbar color="primary">
+  <button mat-icon-button aria-label="Menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
   <div class="title" href="/">{{ title }}</div>
 
   <div class="toolbar-spacer"></div>
 
 
   <div *ngIf="profile" style="margin-right: 20px"> 
-    <img style="margin-bottom: -20px" class="rounded" [src]="imageToShow" alt="Place image title"
-      onerror="this.onerror=null;this.src='./assets/images/user_placeholder_img.jpg';"
+    <img style="margin-bottom: -20px" class="profile-pic" [src]="imageToShow" alt="Place image title"
+      onerror="this.onerror=null; this.src='./assets/user-placeholder.png';"
       *ngIf="!isImageLoading; else noImageFound" />
   </div>
   <div *ngIf="profile" style="margin-right: 20px">{{profile.userPrincipalName}}</div>
   <button mat-raised-button *ngIf="!loggedIn" (click)="login()">Login</button>
   <button mat-raised-button *ngIf="loggedIn" (click)="logout()">Logout</button>
 </mat-toolbar>
-<div class="container">
 
-  <ng-template #noImageFound>
-    <img src="./assets/images/user_placeholder_img.jpg" alt="Fallbackimage" />
-  </ng-template>
-  <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
-  <router-outlet *ngIf="!isIframe"></router-outlet>
-</div>
+<mat-sidenav-container autosize>
+  <mat-sidenav [opened]="true" mode="side">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">
+        <span class="entry">
+          <mat-icon>house</mat-icon>
+          <span>Home</span>
+        </span>
+      </a>
+      <a mat-list-item routerLink="/payments">
+        <span class="entry">
+          <mat-icon>payments</mat-icon>
+          <span>Payments</span>
+        </span>
+      </a>
+      <a mat-list-item routerLink="/sms">
+        <span class="entry">
+          <mat-icon>sms</mat-icon>
+          <span>SMS</span>
+        </span>
+      </a>
+      <a mat-list-item routerLink="/isv">
+        <span class="entry">
+          <mat-icon>storefront</mat-icon>
+          <span>ISV</span>
+        </span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+
+      <ng-template #noImageFound>
+        <img src="./assets/images/user_placeholder.png" alt="Fallbackimage" />
+      </ng-template>
+      <!--This is to avoid reload during acquireTokenSilent() because of hidden iframe -->
+      <router-outlet *ngIf="!isIframe"></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

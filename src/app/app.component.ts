@@ -40,7 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
   imageToShow: any;
 
   constructor(
-    @Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
+    @Inject(MSAL_GUARD_CONFIG) 
+    private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
     private http: HttpClient,

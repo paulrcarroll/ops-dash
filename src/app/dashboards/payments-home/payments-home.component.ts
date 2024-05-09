@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FromToDate, OpsDataService, GatewayPingData, GatewayViewModel } from '../../services/ops-data-service';
 import { GatewayCount, GatewayResponseDayCount, GraphDataPoint } from '../../types/ChartDataTypes';
 import { addDays } from 'src/app/utils/date-utils';
+import { TableViewOptions } from 'src/app/view-table/view-table.component';
 
 @Component({
-  selector: 'app-gateway-home',
-  templateUrl: './gateway-home.component.html',
-  styleUrls: ['./gateway-home.component.scss']
+  selector: 'app-payments-home',
+  templateUrl: './payments-home.component.html',
+  styleUrls: ['./payments-home.component.scss']
 })
-export class GatewayHomeComponent implements OnInit {
+export class PaymentsHomeComponent implements OnInit {
 
   dateRange: FromToDate = {
     fromDate: new Date(),

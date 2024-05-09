@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GatewayHomeComponent } from './gateway-home.component';
+import { ViewTableComponent } from './view-table.component';
 
-describe('GatewayHomeComponent', () => {
-  let component: GatewayHomeComponent;
-  let fixture: ComponentFixture<GatewayHomeComponent>;
+describe('ViewTableComponent', () => {
+  let component: ViewTableComponent;
+  let fixture: ComponentFixture<ViewTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GatewayHomeComponent ]
+      imports: [ViewTableComponent]
     })
     .compileComponents();
-
-    fixture = TestBed.createComponent(GatewayHomeComponent);
+    
+    fixture = TestBed.createComponent(ViewTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
